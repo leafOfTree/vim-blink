@@ -64,17 +64,35 @@ Open a javascript file and in INSERT mode, press <kbd>c-n</kbd> or <kbd>c-p</kbd
         \}
     ```
 
-#### `g:blink_point_default`: String
+#### `g:blink_point_default`
 
 - description: 
     Default `pattern` defines blink points if it's not defined in `g:block_point`.
-
 - default: `'(|),{|},[|],{\n\s*|\n\s*},>|<,"|",''|'''`
-
 - example: 
 
     ```vim
     let g:blink_point_default = '(|),{|},[|], ".*|"'
+    ```
+
+#### `g:blink_mapping_prev`
+
+- description: blink to prev point mapping
+- default: `<c-p>`
+- example: 
+
+    ```vim
+    let g:blink_mapping_prev = '<F1>'
+    ```
+
+#### `g:blink_mapping_next`
+
+- description: blink to next point mapping
+- default: `<c-n>`
+- example: 
+
+    ```vim
+    let g:blink_mapping_next = '<F2>'
     ```
 
 [1]: https://github.com/VundleVim/Vundle.vim
