@@ -52,7 +52,7 @@ Open a javascript file and in INSERT mode, press <kbd>c-n</kbd> or <kbd>c-p</kbd
 
 - description: 
 
-    Filetype related `pattern` defines blink points which are seprated by `,`. `|` marks cursor location.
+    Filetype related `pattern` that defines blink points which are seprated by `,`. `|` marks cursor location.
 
 - default: `Undefined`
 - example: 
@@ -60,6 +60,7 @@ Open a javascript file and in INSERT mode, press <kbd>c-n</kbd> or <kbd>c-p</kbd
     ```vim
     let g:blink_point = {
         \'javascript':  '(|),{|},[|],{\n\s*|\n\s*},>|<,"|",''|''',
+        \'vue':         '(|),{|},[|],".*|"',
         \'jsx':         '(|),{|},[|],".*|"',
         \}
     ```
@@ -67,7 +68,7 @@ Open a javascript file and in INSERT mode, press <kbd>c-n</kbd> or <kbd>c-p</kbd
 #### `g:blink_point_default`
 
 - description: 
-    Default `pattern` defines blink points if it's not defined in `g:block_point`.
+    Default `pattern` that defines blink points if it's not defined in `g:block_point`.
 - default: `'(|),{|},[|],{\n\s*|\n\s*},>|<,"|",''|'''`
 - example: 
 
@@ -77,7 +78,7 @@ Open a javascript file and in INSERT mode, press <kbd>c-n</kbd> or <kbd>c-p</kbd
 
 #### `g:blink_mapping_prev`
 
-- description: blink to prev point mapping
+- description: blink to prev point mapping.
 - default: `<c-p>`
 - example: 
 
@@ -87,7 +88,7 @@ Open a javascript file and in INSERT mode, press <kbd>c-n</kbd> or <kbd>c-p</kbd
 
 #### `g:blink_mapping_next`
 
-- description: blink to next point mapping
+- description: blink to next point mapping.
 - default: `<c-n>`
 - example: 
 
