@@ -3,23 +3,25 @@
 " Functions {{{
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-function! blink#BlinkToEditPointPrev()
-  let flags = 'wb'
-  return blink#BlinkToEditPoint(flags)
+function! blink#BlinkToEditPoint(flags, normal)
+  if a:normal
+    normal! l 
+  endif
+
+  call blink#BlinkToPoint(a:flags)
+
+  if a:normal
+    normal! h
+  endif
+  return ''
 endfunction
 
-function! blink#BlinkToEditPointNext()
-  let flags = 'w'
-  return blink#BlinkToEditPoint(flags)
-endfunction
-
-function! blink#BlinkToEditPoint(flags)
+function! blink#BlinkToPoint(flags)
   let regexp = (exists("b:point_regexp") && b:point_regexp != '')
         \ ? b:point_regexp 
         \ : s:point_regexp_default
 
   call search(regexp, a:flags)
-  return ''
 endfunction
 
 function! blink#Update()
