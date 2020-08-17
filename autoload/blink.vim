@@ -5,7 +5,11 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! blink#BlinkToEditPoint(flags, normal)
   if a:normal
-    normal! l 
+    if match(a:flags, 'b') != -1
+      normal! h 
+    else
+      normal! l 
+    endif
   endif
 
   call blink#BlinkToPoint(a:flags)
