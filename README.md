@@ -112,11 +112,11 @@ Each `blink point` is defined as a `pattern` to match. It is a string separated 
 The function used by the mappings is `blink#BlinkToEditPoint(flags, normal)`
 
 ```vim
-inoremap<silent> <c-p> <c-r>=blink#BlinkToEditPoint("wb",0)<cr>
-inoremap<silent> <c-n> <c-r>=blink#BlinkToEditPoint("w",0)<cr>
+inoremap<silent> <c-p> <c-r>=blink#BlinkToEditPoint("wb", 0)<cr>
+inoremap<silent> <c-n> <c-r>=blink#BlinkToEditPoint("w", 0)<cr>
 
-nnoremap<silent> <c-p> :call blink#BlinkToEditPoint("wb",1)<cr>
-nnoremap<silent> <c-n> :call blink#BlinkToEditPoint("w",1)<cr>
+nnoremap<silent> <c-p> :call blink#BlinkToEditPoint("wb", 1)<cr>
+nnoremap<silent> <c-n> :call blink#BlinkToEditPoint("w", 1)<cr>
 ```
 
 [1]: https://github.com/VundleVim/Vundle.vim
