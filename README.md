@@ -40,19 +40,23 @@ With config
 
 ```vim
 let g:blink_point = {
-      \'javascript':  '(|),{|},[|],{\n\s*|\n\s*},>|<,"|",''|''',
-      \}
+    \'javascript':  '(|),{|},[|],{\n\s*|\n\s*},>|<,"|",''|''',
+    \}
 ```
 
 Open a javascript file and in INSERT mode, press <kbd>c-n</kbd> or <kbd>c-p</kbd>.
 
 ## Configuration
 
+### Blink point
+
+Each `blink point` is defined as a `pattern` to match. It is a string separated by `,`. The cursor position is marked by `|`.
+
 #### `g:blink_point`: `{ key: <filetype>, value: pattern }`
 
 - description: 
 
-    Filetype related `pattern` that defines blink points which are seprated by `,`. `|` marks cursor location.
+    Filetype related `pattern`.
 
 - default: `Undefined`
 - example: 
@@ -68,13 +72,15 @@ Open a javascript file and in INSERT mode, press <kbd>c-n</kbd> or <kbd>c-p</kbd
 #### `g:blink_point_default`
 
 - description: 
-    Default `pattern` that defines blink points if it's not defined in `g:block_point`.
+    Default `pattern`.
 - default: `'(|),{|},[|],{\n\s*|\n\s*},>|<,"|",''|'''`
 - example: 
 
     ```vim
     let g:blink_point_default = '(|),{|},[|], ".*|"'
     ```
+
+### Mapping
 
 #### `g:blink_mapping_prev`
 
@@ -83,7 +89,7 @@ Open a javascript file and in INSERT mode, press <kbd>c-n</kbd> or <kbd>c-p</kbd
 - example: 
 
     ```vim
-    let g:blink_mapping_prev = '<F1>'
+    let g:blink_mapping_prev = '<c-k>'
     ```
 
 #### `g:blink_mapping_next`
@@ -93,8 +99,28 @@ Open a javascript file and in INSERT mode, press <kbd>c-n</kbd> or <kbd>c-p</kbd
 - example: 
 
     ```vim
-    let g:blink_mapping_next = '<F2>'
+    let g:blink_mapping_next = '<c-j>'
     ```
+#### `g:blink_enable_normal`
+
+- description: enable blink in NORMAL mode as well
+- default: 0
+- example: 
+
+    ```vim
+    let g:blink_enable_normal = 1
+    ```
+
+The function used by the mappings is `blink#BlinkToEditPoint(flags, normal)`
+
+```vim
+inoremap<silent> <c-p> <c-r>=blink#BlinkToEditPoint("wb",0)<cr>
+inoremap<silent> <c-n> <c-r>=blink#BlinkToEditPoint("w",0)<cr>
+
+nnoremap<silent> <c-p> :call blink#BlinkToEditPoint("wb",1)<cr>
+nnoremap<silent> <c-n> :call blink#BlinkToEditPoint("w",1)<cr>
+```
+
 
 [1]: https://github.com/VundleVim/Vundle.vim
 [2]: https://github.com/tpope/vim-pathogen
