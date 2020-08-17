@@ -25,10 +25,10 @@ endfunction
 function! blink#Update()
   let filetype = &filetype
   let g_point = g:blink_point[filetype]
-  let b:point_regexp = s:GetBlinkPointRexp(g_point)
+  let b:point_regexp = s:GetPointRegexp(g_point)
 endfunction
 
-function! s:GetBlinkPointRexp(point)
+function! s:GetPointRegexp(point)
   let points = split(a:point, ',')
   let escaped_points = map(points, function('s:Escape'))
   let point_regexp = '\v('.join(escaped_points, '|').')'
@@ -40,6 +40,11 @@ function! s:Escape(key, val)
   let result = substitute(result, '|', '\\zs', 'g')
   return result
 endfunction
+
+function! s:GetConfig(name, default)
+  let name = 'g:blink_'.a:name
+  return exists(name) ? eval(name) : a:default
+endfunction
 " }}}
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -47,11 +52,10 @@ endfunction
 " Config {{{
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let s:point_default = exists("g:blink_point_default") 
-      \ ? g:blink_point_default 
-      \ : '(|),{|},[|],{\n\s*|\n\s*},>|<,"|",''|'''
+let s:point_default = s:GetConfig('point_default',
+      \ '(|),{|},[|],{\n\s*|\n\s*},>|<,"|",''|''')
 
-let s:point_regexp_default = s:GetBlinkPointRexp(s:point_default)
+let s:point_regexp_default = s:GetPointRegexp(s:point_default)
 let b:point_regexp = ''
 " }}}
 
