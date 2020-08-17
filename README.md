@@ -54,10 +54,7 @@ Each `blink point` is defined as a `pattern` to match. It is a string separated 
 
 #### `g:blink_point`: `{ key: <filetype>, value: pattern }`
 
-- description: 
-
-    Filetype related `pattern`.
-
+- description: filetype related `pattern`.
 - default: `Undefined`
 - example: 
 
@@ -71,8 +68,7 @@ Each `blink point` is defined as a `pattern` to match. It is a string separated 
 
 #### `g:blink_point_default`
 
-- description: 
-    Default `pattern`.
+- description: default `pattern`.
 - default: `'(|),{|},[|],{\n\s*|\n\s*},>|<,"|",''|'''`
 - example: 
 
@@ -84,7 +80,7 @@ Each `blink point` is defined as a `pattern` to match. It is a string separated 
 
 #### `g:blink_mapping_prev`
 
-- description: blink to prev point mapping.
+- description: mapping to blink to previous point.
 - default: `<c-p>`
 - example: 
 
@@ -94,7 +90,7 @@ Each `blink point` is defined as a `pattern` to match. It is a string separated 
 
 #### `g:blink_mapping_next`
 
-- description: blink to next point mapping.
+- description: mapping to blink to next point.
 - default: `<c-n>`
 - example: 
 
@@ -103,13 +99,15 @@ Each `blink point` is defined as a `pattern` to match. It is a string separated 
     ```
 #### `g:blink_enable_normal`
 
-- description: enable blink in NORMAL mode as well
-- default: 0
+- description: enable blink in NORMAL mode as well.
+- default: `0`
 - example: 
 
     ```vim
     let g:blink_enable_normal = 1
     ```
+
+### Function
 
 The function used by the mappings is `blink#BlinkToEditPoint(flags, normal)`
 
@@ -120,7 +118,6 @@ inoremap<silent> <c-n> <c-r>=blink#BlinkToEditPoint("w",0)<cr>
 nnoremap<silent> <c-p> :call blink#BlinkToEditPoint("wb",1)<cr>
 nnoremap<silent> <c-n> :call blink#BlinkToEditPoint("w",1)<cr>
 ```
-
 
 [1]: https://github.com/VundleVim/Vundle.vim
 [2]: https://github.com/tpope/vim-pathogen
