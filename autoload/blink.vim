@@ -22,12 +22,12 @@ endfunction
 
 function! s:GetPointRegexp(point)
   let points = split(a:point, ',')
-  let escaped_points = map(points, function('s:Transfer'))
+  let escaped_points = map(points, function('s:Escape'))
   let point_regexp = '\v('.join(escaped_points, '|').')'
   return point_regexp
 endfunction
 
-function! s:Transfer(key, val)
+function! s:Escape(key, val)
   let result = substitute(a:val, '\([(){}[\]<>]\)', '\\\1', 'g')
   let result = substitute(result, '|', '\\zs', 'g')
   return result
