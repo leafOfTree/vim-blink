@@ -6,7 +6,7 @@
 function! blink#BlinkToEditPoint(flags, normal)
   let flags = a:flags
 
-  "Todo: alter the cursor position for NORMAL mode
+  "Todo: maybe need to adjust the cursor position for NORMAL mode
   if a:normal
   endif
 
