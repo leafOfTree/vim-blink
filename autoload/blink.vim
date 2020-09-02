@@ -16,8 +16,10 @@ endfunction
 
 function! blink#Update()
   let filetype = &filetype
-  let g_point = g:blink_point[filetype]
-  let b:point_regexp = s:GetPointRegexp(g_point)
+  if has_key(g:blink_point, filetype)
+    let g_point = g:blink_point[filetype]
+    let b:point_regexp = s:GetPointRegexp(g_point)
+  endif
 endfunction
 
 function! s:GetPointRegexp(point)
@@ -47,8 +49,7 @@ endfunction
 let s:point_default = s:GetConfig('point_default',
       \ '(|),{|},[|],{\n\s*|\n\s*},>|<,"|",''|''')
 
-let s:point_regexp_default = s:GetPointRegexp(s:point_default)
-let b:point_regexp = s:point_regexp_default
+let b:point_regexp = s:GetPointRegexp(s:point_default)
 " }}}
 
 " vim: fdm=marker
