@@ -10,7 +10,11 @@ function! blink#BlinkToEditPoint(flags, normal)
   if a:normal
   endif
 
-  call search(b:point_regexp, flags)
+  if exists('b:point_regexp')
+    call search(b:point_regexp, flags)
+  else
+    call search(s:point_regexp_default, flags)
+  endif
   return ''
 endfunction
 
@@ -50,6 +54,7 @@ let s:point_default = s:GetConfig('point_default',
       \ '(|),{|},[|],{\n\s*|\n\s*},>|<,"|",''|''')
 
 let b:point_regexp = s:GetPointRegexp(s:point_default)
+let s:point_regexp_default = b:point_regexp
 " }}}
 
 " vim: fdm=marker
