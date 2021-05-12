@@ -50,11 +50,12 @@ Open a javascript file and then in INSERT or NORMAL mode, press <kbd>c-n</kbd> o
 
 ### Blink point
 
-Each `blink point` is a `pattern` to match. It is a string separated by `,`. The cursor position is marked by `|`
+`Blink point` is a `pattern` to define where to go. It is a string separated by `,`. The cursor position is marked by `|`
 
 #### `g:blink_point`
 
-- description: filetype related `pattern`, format `{ key: <filetype>, value: pattern }`
+Filetype specific `pattern`, format `{ key: <filetype>, value: pattern }`
+
 - default: `undefined`
 - example: 
 
@@ -68,7 +69,8 @@ Each `blink point` is a `pattern` to match. It is a string separated by `,`. The
 
 #### `g:blink_point_default`
 
-- description: default `pattern`
+Default `pattern`
+
 - default: `'(|),{|},[|],{\n\s*|\n\s*},>|<,"|",''|'''`
 - example: 
 
@@ -80,7 +82,8 @@ Each `blink point` is a `pattern` to match. It is a string separated by `,`. The
 
 #### `g:blink_mapping_prev`
 
-- description: mapping to blink to previous point
+Mapping to blink to previous point
+
 - default: `<c-p>`
 - example: 
 
@@ -90,7 +93,8 @@ Each `blink point` is a `pattern` to match. It is a string separated by `,`. The
 
 #### `g:blink_mapping_next`
 
-- description: mapping to blink to next point
+Mapping to blink to next point
+
 - default: `<c-n>`
 - example: 
 
@@ -102,7 +106,8 @@ Each `blink point` is a `pattern` to match. It is a string separated by `,`. The
 
 #### `g:blink_disable_insert`
 
-- description: disable blink in INSERT mode
+Disable blink in INSERT mode
+
 - default: `0`
 - example: 
 
@@ -112,7 +117,8 @@ Each `blink point` is a `pattern` to match. It is a string separated by `,`. The
 
 #### `g:blink_disable_normal`
 
-- description: disable blink in NORMAL mode
+Disable blink in NORMAL mode
+
 - default: `0`
 - example: 
 
