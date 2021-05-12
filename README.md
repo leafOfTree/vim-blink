@@ -56,8 +56,8 @@ Open a javascript file and then in INSERT or NORMAL mode, press <kbd>c-n</kbd> o
 
 Filetype specific `pattern`, format `{ key: <filetype>, value: pattern }`
 
-- default: `undefined`
-- example: 
+- Default: `undefined`
+- Example: 
 
     ```vim
     let g:blink_point = {
@@ -71,8 +71,8 @@ Filetype specific `pattern`, format `{ key: <filetype>, value: pattern }`
 
 Default `pattern`
 
-- default: `'(|),{|},[|],{\n\s*|\n\s*},>|<,"|",''|'''`
-- example: 
+- Default: `'(|),{|},[|],{\n\s*|\n\s*},>|<,"|",''|'''`
+- Example: 
 
     ```vim
     let g:blink_point_default = '(|),{|},[|], ".*|"'
@@ -84,8 +84,8 @@ Default `pattern`
 
 Mapping to blink to previous point
 
-- default: `<c-p>`
-- example: 
+- Default: `<c-p>`
+- Example: 
 
     ```vim
     let g:blink_mapping_prev = '<c-k>'
@@ -95,8 +95,8 @@ Mapping to blink to previous point
 
 Mapping to blink to next point
 
-- default: `<c-n>`
-- example: 
+- Default: `<c-n>`
+- Example: 
 
     ```vim
     let g:blink_mapping_next = '<c-j>'
@@ -108,8 +108,8 @@ Mapping to blink to next point
 
 Disable blink in INSERT mode
 
-- default: `0`
-- example: 
+- Default: `0`
+- Example: 
 
     ```vim
     let g:blink_disable_insert = 1
@@ -119,8 +119,8 @@ Disable blink in INSERT mode
 
 Disable blink in NORMAL mode
 
-- default: `0`
-- example: 
+- Default: `0`
+- Example: 
 
     ```vim
     let g:blink_disable_normal = 1
