@@ -3,18 +3,21 @@ function! s:GetConfig(name, default)
   return exists(name) ? eval(name) : a:default
 endfunction
 
-let s:blink_mapping_prev = s:GetConfig('mapping_prev', '<c-p>')
-let s:blink_mapping_next = s:GetConfig('mapping_next', '<c-n>')
-let s:blink_enable_normal = s:GetConfig('enable_normal', 0)
+let s:mapping_prev = s:GetConfig('mapping_prev', '<c-p>')
+let s:mapping_next = s:GetConfig('mapping_next', '<c-n>')
+let s:disable_normal = s:GetConfig('disable_normal', 0)
+let s:disable_insert = s:GetConfig('disable_insert', 0)
 
-execute 'inoremap<silent> '.s:blink_mapping_prev
-      \.' <c-r>=blink#BlinkToEditPoint("wb", 0)<cr>'
-execute 'inoremap<silent> '.s:blink_mapping_next
-      \.' <c-r>=blink#BlinkToEditPoint("w", 0)<cr>'
-if s:blink_enable_normal
-  execute 'nnoremap<silent> '.s:blink_mapping_prev
+if !s:disable_insert
+  execute 'inoremap<silent> '.s:mapping_prev
+        \.' <c-r>=blink#BlinkToEditPoint("wb", 0)<cr>'
+  execute 'inoremap<silent> '.s:mapping_next
+        \.' <c-r>=blink#BlinkToEditPoint("w", 0)<cr>'
+endif
+if !s:disable_normal
+  execute 'nnoremap<silent> '.s:mapping_prev
         \.' :call blink#BlinkToEditPoint("wb", 1)<cr>'
-  execute 'nnoremap<silent> '.s:blink_mapping_next
+  execute 'nnoremap<silent> '.s:mapping_next
         \.' :call blink#BlinkToEditPoint("w", 1)<cr>'
 endif
 

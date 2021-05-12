@@ -4,7 +4,7 @@
 <img alt="screencast" src="https://raw.githubusercontent.com/leafOfTree/leafOfTree.github.io/master/vim_run_screencast.gif" />
 </p>
 
-Blink to anywhere in INSERT mode.
+Blink to anywhere in INSERT or NORMAL mode
 
 ## Installation
 
@@ -17,7 +17,7 @@ Blink to anywhere in INSERT mode.
 
 - [vim-pathogen][2]
 
-        cd ~/.vim/bundle && \
+        cd ~/.vim/bundle
         git clone https://github.com/leafOfTree/vim-blink --depth 1
 
 - [vim-plug][3]
@@ -32,11 +32,11 @@ Blink to anywhere in INSERT mode.
 <br />
 </details>
 
-Please stay up to date. Feel free to open an issue or a pull request.
+Please stay up to date. Feel free to open an issue or a pull request
 
 ## Usage
 
-With config
+Add config
 
 ```vim
 let g:blink_point = {
@@ -44,18 +44,18 @@ let g:blink_point = {
     \}
 ```
 
-Open a javascript file and in INSERT mode, press <kbd>c-n</kbd> or <kbd>c-p</kbd>.
+Open a javascript file and then in INSERT or NORMAL mode, press <kbd>c-n</kbd> or <kbd>c-p</kbd>
 
 ## Configuration
 
 ### Blink point
 
-Each `blink point` is defined as a `pattern` to match. It is a string separated by `,`. The cursor position is marked by `|`.
+Each `blink point` is a `pattern` to match. It is a string separated by `,`. The cursor position is marked by `|`
 
-#### `g:blink_point`: `{ key: <filetype>, value: pattern }`
+#### `g:blink_point`
 
-- description: filetype related `pattern`.
-- default: `Undefined`
+- description: filetype related `pattern`, format `{ key: <filetype>, value: pattern }`
+- default: `undefined`
 - example: 
 
     ```vim
@@ -68,7 +68,7 @@ Each `blink point` is defined as a `pattern` to match. It is a string separated 
 
 #### `g:blink_point_default`
 
-- description: default `pattern`.
+- description: default `pattern`
 - default: `'(|),{|},[|],{\n\s*|\n\s*},>|<,"|",''|'''`
 - example: 
 
@@ -80,7 +80,7 @@ Each `blink point` is defined as a `pattern` to match. It is a string separated 
 
 #### `g:blink_mapping_prev`
 
-- description: mapping to blink to previous point.
+- description: mapping to blink to previous point
 - default: `<c-p>`
 - example: 
 
@@ -90,21 +90,34 @@ Each `blink point` is defined as a `pattern` to match. It is a string separated 
 
 #### `g:blink_mapping_next`
 
-- description: mapping to blink to next point.
+- description: mapping to blink to next point
 - default: `<c-n>`
 - example: 
 
     ```vim
     let g:blink_mapping_next = '<c-j>'
     ```
-#### `g:blink_enable_normal`
 
-- description: enable blink in NORMAL mode as well.
+### Mode
+
+#### `g:blink_disable_insert`
+
+- description: disable blink in INSERT mode
 - default: `0`
 - example: 
 
     ```vim
-    let g:blink_enable_normal = 1
+    let g:blink_disable_insert = 1
+    ```
+
+#### `g:blink_disable_normal`
+
+- description: disable blink in NORMAL mode
+- default: `0`
+- example: 
+
+    ```vim
+    let g:blink_disable_normal = 1
     ```
 
 ### Function
