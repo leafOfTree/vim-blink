@@ -4,17 +4,11 @@
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! blink#BlinkToEditPoint(flags, normal)
-  let flags = a:flags
+  let point_regexp = exists('b:point_regexp')
+        \ ? b:point_regexp
+        \ : s:point_regexp_default
+  call search(point_regexp, a:flags)
 
-  "Todo: maybe need to adjust the cursor position for NORMAL mode
-  if a:normal
-  endif
-
-  if exists('b:point_regexp')
-    call search(b:point_regexp, flags)
-  else
-    call search(s:point_regexp_default, flags)
-  endif
   return ''
 endfunction
 
@@ -29,12 +23,12 @@ endfunction
 function! s:GetPointRegexp(point)
   let points = split(a:point, ',')
   let escaped_points = map(points, function('s:Escape'))
-  let point_regexp = '\v('.join(escaped_points, '|').')'
+  let point_regexp = '\('.join(escaped_points, '\|').'\)'
   return point_regexp
 endfunction
 
 function! s:Escape(key, val)
-  let result = substitute(a:val, '\([(){}[\]<>]\)', '\\\1', 'g')
+  let result = substitute(a:val, '\([[\]]\)', '\\\1', 'g')
   let result = substitute(result, '|', '\\zs', 'g')
   return result
 endfunction
