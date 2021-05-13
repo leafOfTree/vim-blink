@@ -54,7 +54,7 @@ Open a javascript file and then in INSERT or NORMAL mode, press <kbd>c-n</kbd> o
 
 #### `g:blink_point`
 
-Filetype specific `pattern`. The format is `{ key: <filetype>, value: pattern }`
+Filetype specific `pattern`. The format is `{ key: filetype, value: pattern }`
 
 - Default: `undefined`
 - Example: 
@@ -77,6 +77,8 @@ Default `pattern`
     ```vim
     let g:blink_point_default = '(|), {|}, \[|\], ".*|"'
     ```
+
+For more details about vim `pattern`, see `:h pattern`
 
 ### Mapping
 
