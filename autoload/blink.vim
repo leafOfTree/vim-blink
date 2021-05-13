@@ -14,8 +14,8 @@ endfunction
 function! blink#Update()
   let filetype = &filetype
   if has_key(g:blink_point, filetype)
-    let g_point = g:blink_point[filetype]
-    let b:point_regexp = s:GetPointRegexp(g_point)
+    let point = g:blink_point[filetype]
+    let b:point_regexp = s:GetPointRegexp(point)
   endif
 endfunction
 
@@ -28,8 +28,10 @@ endfunction
 
 function! s:Escape(key, val)
   let result = a:val
+  " For back compatibility to support `[|]`
   let result = substitute(result, '\[|\]', '\\[|\\]', 'g')
-  let result = substitute(result, '|', '\\zs', 'g')
+  " Ignore '\|'
+  let result = substitute(result, '\(\\\)\@<!|', '\\zs', 'g')
   return result
 endfunction
 
@@ -45,10 +47,9 @@ endfunction
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let s:point_default = s:GetConfig('point_default',
-      \ '(|),{|},\[|\],{\n\s*|\n\s*},>|<,"|",''|''')
+      \ '(|), {|}, \[|\], {\n\s*|\n\s*}, >|<, "|", ''|''')
 
-let b:point_regexp = s:GetPointRegexp(s:point_default)
-let s:point_regexp_default = b:point_regexp
+let s:point_regexp_default = s:GetPointRegexp(s:point_default)
 " }}}
 
 " vim: fdm=marker

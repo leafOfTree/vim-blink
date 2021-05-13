@@ -40,7 +40,7 @@ Add config
 
 ```vim
 let g:blink_point = {
-    \'javascript':  '(|),{|},\[|\],{\n\s*|\n\s*},>|<,"|",''|''',
+    \'javascript':  '(|), {|}, \[|\], {\n\s*|\n\s*}, >|<, ''|'', "|"'
     \}
 ```
 
@@ -61,9 +61,9 @@ Filetype specific `pattern`. The format is `{ key: filetype, value: pattern }`
 
     ```vim
     let g:blink_point = {
-        \'javascript':  '(|),{|},\[|\],{\n\s*|\n\s*},>|<,"|",''|''',
-        \'vue':         '(|),{|},\[|\],".*|"',
-        \'jsx':         '(|),{|},\[|\],".*|"',
+        \'vue':   ':\s*|;, ^<|\(script\|style\|template\)',
+        \'jsx':   '(|), {|}, \[|\], >|<, "|", ''|'', \s|[)}]',
+        \'text':  '(|.*), [a-c]|[d-g]',
         \}
     ```
 
@@ -71,7 +71,7 @@ Filetype specific `pattern`. The format is `{ key: filetype, value: pattern }`
 
 Default `pattern`
 
-- Default: `'(|),{|},\[|\],{\n\s*|\n\s*},>|<,"|",''|'''`
+- Default: `'(|), {|}, \[|\], {\n\s*|\n\s*}, >|<, ''|'', "|"'`
 - Example: 
 
     ```vim
