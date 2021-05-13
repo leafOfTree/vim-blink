@@ -28,7 +28,8 @@ function! s:GetPointRegexp(point)
 endfunction
 
 function! s:Escape(key, val)
-  let result = substitute(a:val, '\([[\]]\)', '\\\1', 'g')
+  let result = a:val
+  let result = substitute(result, '\[|\]', '\\[|\\]', 'g')
   let result = substitute(result, '|', '\\zs', 'g')
   return result
 endfunction
