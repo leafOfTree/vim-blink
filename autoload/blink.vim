@@ -8,7 +8,6 @@ function! blink#BlinkToEditPoint(flags, normal)
         \ ? b:point_regexp
         \ : s:point_regexp_default
   call search(point_regexp, a:flags)
-
   return ''
 endfunction
 
@@ -21,7 +20,7 @@ function! blink#Update()
 endfunction
 
 function! s:GetPointRegexp(point)
-  let points = split(a:point, ',')
+  let points = split(a:point, ',\s*')
   let escaped_points = map(points, function('s:Escape'))
   let point_regexp = '\('.join(escaped_points, '\|').'\)'
   return point_regexp
@@ -46,7 +45,7 @@ endfunction
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let s:point_default = s:GetConfig('point_default',
-      \ '(|),{|},[|],{\n\s*|\n\s*},>|<,"|",''|''')
+      \ '(|),{|},\[|\],{\n\s*|\n\s*},>|<,"|",''|''')
 
 let b:point_regexp = s:GetPointRegexp(s:point_default)
 let s:point_regexp_default = b:point_regexp
