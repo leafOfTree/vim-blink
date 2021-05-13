@@ -50,7 +50,7 @@ Open a javascript file and then in INSERT or NORMAL mode, press <kbd>c-n</kbd> o
 
 ### Blink point
 
-`Blink point` is a `pattern` to define where to go. It is a string separated by `,`. The cursor position is marked by `|`
+A `pattern` to define where to go. It is a string separated by `,`. The cursor position is marked by `|`
 
 #### `g:blink_point`
 
